@@ -1,8 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ToastProvider from "@/components/providers/toast-provider";
-import PageTransition from "@/components/ui/page-transition";
-import AnimationProvider from "@/components/providers/animation-provider";
 
 const inter = Inter({
   subsets: ["latin"],

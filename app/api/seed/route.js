@@ -17,15 +17,15 @@ export async function POST() {
     const hashedPassword = await bcrypt.hash("password123", 10);
     
     const user1 = await User.create({
-      name: "Alice Johnson",
-      email: "alice@student.edu",
+      name: "Udeme Johnson",
+      email: "udeme@student.edu",
       password: hashedPassword,
       role: "user",
     });
     
     const runner1 = await User.create({
-      name: "Bob Smith",
-      email: "bob@student.edu",
+      name: "Tamar Smith",
+      email: "tamar@student.edu",
       password: hashedPassword,
       role: "runner",
     });
@@ -112,9 +112,9 @@ export async function POST() {
     return NextResponse.json({ 
       message: "Database seeded successfully",
       credentials: {
-        user: { email: "alice@student.edu", password: "password123" },
+        user: { email: "udeme@student.edu", password: "password123" },
         runners: [
-          { email: "bob@student.edu", password: "password123" },
+          { email: "tamar@student.edu", password: "password123" },
           { email: "carol@student.edu", password: "password123" },
           { email: "david@student.edu", password: "password123" },
         ]

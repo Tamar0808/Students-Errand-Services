@@ -104,8 +104,8 @@ export default function SignInPage() {
 
           <div className="mt-6 p-4 bg-slate-50 rounded-lg text-xs text-slate-600">
             <p className="font-medium mb-2">Demo Credentials:</p>
-            <p>User: alice@student.edu</p>
-            <p>Runner: bob@student.edu</p>
+            <p>User: udeme@student.edu</p>
+            <p>Runner: tamar@student.edu</p>
             <p>Password: password123</p>
           </div>
         </CardContent>

@@ -8,38 +8,12 @@ import { ArrowRight, Users, Zap, Shield, Star, Sparkles, Clock, MapPin, CheckCir
 import { NairaIcon } from "@/components/ui/naira-icon";
 import Footer from "@/components/footer";
 import ScrollToTop from "@/components/ui/scroll-to-top";
-import { floatingAnimation, revealText, animateStagger } from "@/lib/animations";
-import AnimatedLink from "@/components/ui/animated-link";
-import AnimatedCard from "@/components/ui/animated-card";
 import SimpleCountUp from "@/components/ui/simple-count-up";
 
 export default function Home() {
   const heroRef = useRef(null);
   const featuresRef = useRef(null);
   const floatingElementsRef = useRef([]);
-
-  useEffect(() => {
-    // Animate hero text
-    if (heroRef.current) {
-      const heroElements = heroRef.current.querySelectorAll('.hero-animate');
-      heroElements.forEach((element, index) => {
-        revealText(element, index * 0.2);
-      });
-    }
-
-    // Animate floating background elements
-    floatingElementsRef.current.forEach((element, index) => {
-      if (element) {
-        floatingAnimation(element, 1 + index * 0.3);
-      }
-    });
-
-    // Animate feature cards
-    if (featuresRef.current) {
-      const featureCards = featuresRef.current.children;
-      animateStagger(featureCards, 0.5);
-    }
-  }, []);
 
   return (
     <div className="min-h-screen overflow-x-hidden">
@@ -53,55 +27,46 @@ export default function Home() {
         </div>
         
         <div className="absolute inset-0 overflow-hidden">
-          <div 
-            ref={el => floatingElementsRef.current[0] = el}
-            className="absolute -top-20 -right-20 w-60 h-60 bg-gradient-to-br from-indigo-400/20 to-purple-400/20 rounded-full blur-3xl"
-          ></div>
-          <div 
-            ref={el => floatingElementsRef.current[1] = el}
-            className="absolute -bottom-20 -left-20 w-60 h-60 bg-gradient-to-br from-pink-400/20 to-indigo-400/20 rounded-full blur-3xl"
-          ></div>
-          <div 
-            ref={el => floatingElementsRef.current[2] = el}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-br from-purple-400/10 to-pink-400/10 rounded-full blur-3xl"
-          ></div>
+          <div className="absolute -top-20 -right-20 w-60 h-60 bg-gradient-to-br from-indigo-400/20 to-purple-400/20 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-gradient-to-br from-pink-400/20 to-indigo-400/20 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-br from-purple-400/10 to-pink-400/10 rounded-full blur-3xl"></div>
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24">
-          <div ref={heroRef} className="text-center space-y-12">
+          <div className="text-center space-y-12">
             <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-full text-sm font-medium text-indigo-700 hero-animate">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-full text-sm font-medium text-indigo-700">
                 <Sparkles className="h-4 w-4" />
                 <span>Connecting Students Across Campus</span>
               </div>
               
-              <h1 className="text-6xl md:text-8xl font-bold text-heading-solid text-balance leading-tight hero-animate">
+              <h1 className="text-6xl md:text-8xl font-bold text-heading-solid text-balance leading-tight">
                 Student Errand
                 <br />
-                <span className="relative gradient-text hero-animate">
+                <span className="relative gradient-text">
                   Services
                   <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full animate-pulse"></div>
                 </span>
               </h1>
               
-              <p className="text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto text-balance leading-relaxed hero-animate">
+              <p className="text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto text-balance leading-relaxed">
                 Connect with fellow UNIPORT students to get errands done or earn money running them. 
                 <span className="text-indigo-600 font-semibold"> Fast, safe, and community-driven.</span>
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center hero-animate">
-              <AnimatedLink href="/auth/signup?role=user">
+              <Link href="/auth/signup?role=user">
                 <Button size="lg" className="group shadow-strong hover:shadow-glow transition-all duration-300 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 px-8 py-4 text-lg">
                   Get Started as User
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
-              </AnimatedLink>
-              <AnimatedLink href="/auth/signup?role=runner">
+              </Link>
+              <Link href="/auth/signup?role=runner">
                 <Button size="lg" variant="outline" className="shadow-medium hover:shadow-strong transition-all duration-300 border-2 border-indigo-200 hover:border-indigo-300 px-8 py-4 text-lg hover-glow">
                   Become a Runner
                 </Button>
-              </AnimatedLink>
+              </Link>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 lg:gap-12 mt-20 max-w-5xl mx-auto">
@@ -155,7 +120,7 @@ export default function Home() {
           </div>
 
           <div ref={featuresRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            <AnimatedCard className="group text-center space-y-6 interactive-card p-8 rounded-2xl">
+            <Card className="group text-center space-y-6 interactive-card p-8 rounded-2xl">
               <div className="relative">
                 <div className="w-20 h-20 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-3xl flex items-center justify-center mx-auto group-hover:shadow-glow transition-all duration-300">
                   <Zap className="h-10 w-10 text-indigo-600" />
@@ -172,9 +137,9 @@ export default function Home() {
                 <Clock className="h-4 w-4" />
                 <span>Average response: 3 minutes</span>
               </div>
-            </AnimatedCard>
+            </Card>
 
-            <AnimatedCard className="group text-center space-y-6 interactive-card p-8 rounded-2xl">
+            <Card className="group text-center space-y-6 interactive-card p-8 rounded-2xl">
               <div className="relative">
                 <div className="w-20 h-20 bg-gradient-to-br from-green-100 to-green-200 rounded-3xl flex items-center justify-center mx-auto group-hover:shadow-glow transition-all duration-300">
                   <Shield className="h-10 w-10 text-green-600" />
@@ -191,9 +156,9 @@ export default function Home() {
                 <Shield className="h-4 w-4" />
                 <span>100% verified students</span>
               </div>
-            </AnimatedCard>
+            </Card>
 
-            <AnimatedCard className="group text-center space-y-6 interactive-card p-8 rounded-2xl">
+            <Card className="group text-center space-y-6 interactive-card p-8 rounded-2xl">
               <div className="relative">
                 <div className="w-20 h-20 bg-gradient-to-br from-purple-100 to-purple-200 rounded-3xl flex items-center justify-center mx-auto group-hover:shadow-glow transition-all duration-300">
                   <Users className="h-10 w-10 text-purple-600" />
@@ -210,7 +175,7 @@ export default function Home() {
                 <Users className="h-4 w-4" />
                 <span>Growing community</span>
               </div>
-            </AnimatedCard>
+            </Card>
           </div>
         </div>
       </div>

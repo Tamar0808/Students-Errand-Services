@@ -6,7 +6,6 @@ import { useSession, signOut } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Menu, X, Sparkles, Bell } from "lucide-react";
-import AnimatedLink from "@/components/ui/animated-link";
 
 export default function Navbar() {
     const { data: session } = useSession();
@@ -33,18 +32,18 @@ export default function Navbar() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     <div className="flex items-center">
-                        <AnimatedLink href="/dashboard" className="flex items-center gap-2 text-xl font-bold text-primary-solid hover-scale transition-all duration-200" onClick={closeMobileMenu}>
+                        <Link href="/dashboard" className="flex items-center gap-2 text-xl font-bold text-primary-solid hover-scale transition-all duration-200" onClick={closeMobileMenu}>
                             <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center">
                                 <Sparkles className="h-4 w-4 text-white" />
                             </div>
                             Student Errands
-                        </AnimatedLink>
+                        </Link>
                     </div>
 
                     <div className="hidden md:flex items-center space-x-2">
-                        <AnimatedLink href="/dashboard">
+                        <Link href="/dashboard">
                             <Button variant="ghost" className="hover:bg-indigo-50 hover:text-indigo-700 transition-colors">Dashboard</Button>
-                        </AnimatedLink>
+                        </Link>
 
                         {session.user.role === "runner" && (
                             <>

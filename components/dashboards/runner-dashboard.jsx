@@ -10,8 +10,6 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Clock, CheckCircle, Star, Zap, User, Calendar, TrendingUp, Award, Target } from "lucide-react";
 import { NairaIcon } from "@/components/ui/naira-icon";
 import { LoadingSpinner, LoadingCard } from "@/components/ui/loading";
-import { useStaggerAnimation } from "@/hooks/useStaggerAnimation";
-import AnimatedCard from "@/components/ui/animated-card";
 import { toast } from "sonner";
 import SimpleCountUp from "@/components/ui/simple-count-up";
 
@@ -23,10 +21,6 @@ export default function RunnerDashboard() {
   const [loading, setLoading] = useState(false);
   const [acceptingErrand, setAcceptingErrand] = useState(null);
   const [completingErrand, setCompletingErrand] = useState(null);
-
-  // Animation hooks
-  const errandsContainerRef = useStaggerAnimation([availableErrands], 0.2);
-  const tasksContainerRef = useStaggerAnimation([myTasks], 0.2);
 
   useEffect(() => {
     if (session?.user?.id) {
@@ -288,7 +282,7 @@ export default function RunnerDashboard() {
                 </CardContent>
               </Card>
             ) : (
-              <div ref={errandsContainerRef} className="space-y-4">
+              <div className="space-y-4">
                 {availableErrands.map((errand, index) => (
                   <Card key={errand._id} className="hover-lift interactive-card animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
                     <CardHeader className="pb-4">
@@ -382,7 +376,7 @@ export default function RunnerDashboard() {
                 </CardContent>
               </Card>
             ) : (
-              <div ref={tasksContainerRef} className="space-y-4">
+              <div className="space-y-4">
                 {[...myTasks]
                   .sort((a, b) => {
                     if (a.status === "accepted" && b.status === "completed") return -1;

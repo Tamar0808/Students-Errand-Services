@@ -13,8 +13,6 @@ import { Plus, MapPin, Clock, Sparkles, TrendingUp, CheckCircle, AlertCircle, Us
 import { NairaIcon } from "@/components/ui/naira-icon";
 import { toast } from "sonner";
 import { LoadingSpinner } from "@/components/ui/loading";
-import { useStaggerAnimation } from "@/hooks/useStaggerAnimation";
-import AnimatedCard from "@/components/ui/animated-card";
 import SimpleCountUp from "@/components/ui/simple-count-up";
 
 export default function UserDashboard() {
@@ -29,9 +27,6 @@ export default function UserDashboard() {
         urgency: "medium",
         priceOffer: "",
     });
-
-    // Animation hook for staggered errands
-    const errandsContainerRef = useStaggerAnimation([errands], 0.2);
 
     useEffect(() => {
         fetchErrands();
@@ -385,7 +380,7 @@ export default function UserDashboard() {
                         </CardContent>
                     </Card>
                 ) : (
-                    <div ref={errandsContainerRef} className="grid gap-4">
+                    <div className="grid gap-4">
                         {errands
                             .sort((a, b) => {
                                 // Sort by status: pending first, then accepted, then completed
