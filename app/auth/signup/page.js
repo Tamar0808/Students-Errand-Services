@@ -98,25 +98,47 @@ export default function SignUpPage() {
               <Label>I want to</Label>
               <div className="flex gap-4">
                 <label className="flex items-center space-x-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="role"
-                    value="user"
-                    checked={formData.role === "user"}
-                    onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                    className="w-4 h-4"
-                  />
+                  <div className="relative">
+                    <input
+                      type="radio"
+                      name="role"
+                      value="user"
+                      checked={formData.role === "user"}
+                      onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                      className="sr-only"
+                    />
+                    <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
+                      formData.role === "user" 
+                        ? "border-blue-600 bg-blue-600" 
+                        : "border-gray-300 bg-white"
+                    }`}>
+                      {formData.role === "user" && (
+                        <div className="w-2 h-2 rounded-full bg-white"></div>
+                      )}
+                    </div>
+                  </div>
                   <span>Post errands</span>
                 </label>
                 <label className="flex items-center space-x-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="role"
-                    value="runner"
-                    checked={formData.role === "runner"}
-                    onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                    className="w-4 h-4"
-                  />
+                  <div className="relative">
+                    <input
+                      type="radio"
+                      name="role"
+                      value="runner"
+                      checked={formData.role === "runner"}
+                      onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                      className="sr-only"
+                    />
+                    <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
+                      formData.role === "runner" 
+                        ? "border-blue-600 bg-blue-600" 
+                        : "border-gray-300 bg-white"
+                    }`}>
+                      {formData.role === "runner" && (
+                        <div className="w-2 h-2 rounded-full bg-white"></div>
+                      )}
+                    </div>
+                  </div>
                   <span>Run errands</span>
                 </label>
               </div>
