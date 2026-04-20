@@ -1,0 +1,23 @@
+{
+  "name": "Student Errand Services - UNIPORT",
+  "short_name": "Student Errands",
+  "description": "Connect UNIPORT students who need errands done with reliable student runners",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#667eea",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "productivity", "social"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "scope": "/",
+  "id": "student-errands-uniport"
+}
